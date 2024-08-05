@@ -5,6 +5,7 @@ const appSettings = {
     databaseURL: "https://mobile-app-48c8f-default-rtdb.firebaseio.com/" // Replaced with my actual Firebase Realtime Database URL
 }
 
+// FireBase configuration
 const app = initializeApp(appSettings);
 const database = getDatabase(app);
 const shoppingListInDB = ref(database, "shoppingList");
@@ -22,6 +23,7 @@ addButtonEl.addEventListener("click", function() {
     }
 });
 
+// Listens for changes to the "shoppingList" node in the database
 onValue(shoppingListInDB, function(snapshot) {    
     if (snapshot.exists()) {
         let itemsArray = Object.entries(snapshot.val());
